@@ -9,18 +9,23 @@ using System.Threading.Tasks;
 
 namespace EditorialService.BL.UseCases
 {
-    public class WriterUseCase : IWriterUseCase
+    public class EditorUseCase : IEditorUseCase
     {
         public readonly EditorialDbContext db;
 
-        public WriterUseCase(EditorialDbContext db)
+        public EditorUseCase(EditorialDbContext db)
         {
             this.db = db;
         }
 
-        public async Task<PostResponse> getPostByAuthor(OwnPostRequest postRequest)
+        public async Task<bool> AddComment(CommentRequest commentRequest)
         {
-            return await PostQueries.getPostsByAuthor(db, postRequest);
+            return await PostQueries.addComment(true, db, commentRequest);
+        }
+
+        public async Task<PostResponse> getPendingPost()
+        {
+            return await PostQueries.getPosts(false, db);
         }
     }
 }

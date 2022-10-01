@@ -15,5 +15,7 @@ namespace EditorialService.BL.Domain.Model.Entities
         public string Title { get; set; }
         public string Content { get; set; }
         public bool IsApproved { get; set; }
+
+        public long? ApprovedBy { get; set; }
     }
 }

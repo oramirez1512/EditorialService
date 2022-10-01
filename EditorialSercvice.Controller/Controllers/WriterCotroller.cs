@@ -1,25 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
-
+﻿using EditorialService.BL.Domain.Requests;
+using EditorialService.BL.UseCases;
+using Microsoft.AspNetCore.Mvc;
 namespace EditorialService.Controller.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WriterCotroller : ControllerBase
     {
 
 
         private readonly ILogger<WriterCotroller> _logger;
+        private readonly IWriterUseCase _writerUseCase;
 
-        public WriterCotroller(ILogger<WriterCotroller> logger)
+        public WriterCotroller(ILogger<WriterCotroller> logger, IWriterUseCase writerUseCase)
         {
             _logger = logger;
+            _writerUseCase = writerUseCase;
         }
 
         [HttpPost(Name = "GetMyPosts")]
-        public async Task<IActionResult> GetMyPosts()
+        public async Task<IActionResult> GetMyPosts([FromBody] OwnPostRequest ownPostRequest)
         {
-            return null;
+            return Ok(await _writerUseCase.getPostByAuthor(ownPostRequest));
         }
 
         [HttpPut(Name = "CreateNewPost")]

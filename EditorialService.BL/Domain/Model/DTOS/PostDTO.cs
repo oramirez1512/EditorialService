@@ -9,6 +9,6 @@ namespace EditorialService.BL.Domain.Model.DTOS
 {
     public class PostDTO: Post
     {
-        List<string> Comments;
+        public List<Comment> Comments { get; set; }
     }
 }
