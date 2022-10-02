@@ -1,6 +1,8 @@
 using EditorialService.BL.Common;
 using EditorialService.BL.Domain.Model.Entities;
 using EditorialService.BL.UseCases;
+using EditorialService.Controller.Security;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPublishedUseCase,PublishedUseCase>();
 builder.Services.AddScoped<IEditorUseCase, EditorUseCase>();
 builder.Services.AddScoped<IWriterUseCase, WriterUseCase>();
+builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("BasicAuthentication",null);
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Editors", policy => policy.RequireClaim("RoleId","2"));
+    options.AddPolicy("Writers", policy => policy.RequireClaim("RoleId", "1"));
+});
 
 var app = builder.Build();
 
@@ -27,6 +38,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
@@ -55,8 +67,8 @@ static void AddEditorialDb(WebApplication app)
     db.permissions.Add(permissions2);
     db.permissions.Add(permissions3);
     User user1 = new User { UserId = 1, PersonId = 1, RoleId = 1, UserName = "Writer1", Password = "123Writer" };
-    User user2 = new User { UserId = 2, PersonId = 2, RoleId = 1, UserName = "Editor1", Password = "123Editor" };
-    User user3 = new User { UserId = 3, PersonId = 2, RoleId = 1, UserName = "Commentarist1", Password = "123Commentarist" };
+    User user2 = new User { UserId = 2, PersonId = 2, RoleId = 2, UserName = "Editor1", Password = "123Editor" };
+    User user3 = new User { UserId = 3, PersonId = 2, RoleId = 3, UserName = "Commentarist1", Password = "123Commentarist" };
     db.users.Add(user1);
     db.users.Add(user2);
     db.users.Add(user3);

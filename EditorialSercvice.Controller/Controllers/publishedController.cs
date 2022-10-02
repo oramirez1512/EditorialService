@@ -1,12 +1,14 @@
 ﻿using EditorialService.BL.Domain.Requests;
 using EditorialService.BL.Domain.Responses;
 using EditorialService.BL.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditorialService.Controller.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [Authorize]
     public class publishedController: ControllerBase
     {
 

@@ -1,10 +1,12 @@
 ﻿using EditorialService.BL.Domain.Requests;
 using EditorialService.BL.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace EditorialService.Controller.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [Authorize(Policy ="Writers")]
     public class WriterCotroller : ControllerBase
     {
 

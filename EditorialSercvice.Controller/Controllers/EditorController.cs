@@ -2,12 +2,13 @@
 using EditorialService.BL.UseCases;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace EditorialService.Controller.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    [Authorize]
+    [Authorize (Policy = "Editors")]
     public class EditorController:ControllerBase
     {
         private readonly ILogger<EditorController> _logger;
