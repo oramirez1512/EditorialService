@@ -22,6 +22,10 @@ namespace EditorialService.Controller.Controllers
             _useCase = publishedUseCase;
         }
 
+        /// <summary>
+        /// Get all published posts
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GetPublished")]
         public async Task<IActionResult> GetPublished()
         {
@@ -29,6 +33,11 @@ namespace EditorialService.Controller.Controllers
             return Ok(publishedResponse);
         }
 
+        /// <summary>
+        /// Add a comment in a published post
+        /// </summary>
+        /// <param name="commentRequest"></param>
+        /// <returns></returns>
         [HttpPut(Name = "AddComment")]
         public async Task<IActionResult> AddComment([FromBody] CommentRequest commentRequest)
         {
