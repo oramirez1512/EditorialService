@@ -1,11 +1,13 @@
 ﻿using EditorialService.BL.Domain.Requests;
 using EditorialService.BL.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EditorialService.Controller.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
+    [Authorize]
     public class EditorController:ControllerBase
     {
         private readonly ILogger<EditorController> _logger;
@@ -27,6 +29,18 @@ namespace EditorialService.Controller.Controllers
         public async Task<IActionResult> AddCommentBeforePublish([FromBody] CommentRequest commentRequest)
         {
             return Ok(await _editor.AddComment(commentRequest));
+        }
+
+        [HttpPost(Name ="ApprovePost")]
+        public async Task<IActionResult> ApprovePost([FromBody] PostRequestBase postRequest) 
+        {
+            return Ok(await _editor.ApprovePost(postRequest));
+        }
+
+        [HttpPost(Name = "RejectPost")]
+        public async Task<IActionResult> RejectPost([FromBody] PostRequestBase postRequest)
+        {
+            return Ok(await _editor.RejectPost(postRequest));
         }
 
 

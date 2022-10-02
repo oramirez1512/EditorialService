@@ -25,21 +25,21 @@ namespace EditorialService.Controller.Controllers
         }
 
         [HttpPut(Name = "CreateNewPost")]
-        public async Task<IActionResult> CreateNewPost()
+        public async Task<IActionResult> CreateNewPost([FromBody] CreatePostRequest createPostRequest)
         {
-            return null;
+            return Ok(await _writerUseCase.CreateNewPost(createPostRequest));
         }
 
         [HttpPost(Name = "EditPost")]
-        public async Task<IActionResult> EditPost()
+        public async Task<IActionResult> EditPost([FromBody] EditPostRequest editPostRequest)
         {
-            return null;
+            return Ok(await _writerUseCase.EditPost(editPostRequest));
         }
 
         [HttpPost(Name = "SubmitPost")]
-        public async Task<IActionResult> SubmitPost()
+        public async Task<IActionResult> SubmitPost([FromBody]PostRequestBase postRequest)
         {
-            return null;
+            return Ok(await _writerUseCase.SubmitPost(postRequest));
         }
 
     }

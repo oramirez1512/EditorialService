@@ -12,9 +12,9 @@ namespace EditorialService.BL.Common
 {
     public static class PostQueries
     {
-        public static async Task<PostResponse> getPosts(bool isApproved, EditorialDbContext db) 
+        public static async Task<PostResponse> getPosts(bool isApproved,bool submited, EditorialDbContext db) 
         {
-            List<Post> posts = await Task<List<Post>>.Run(() => { return db.posts.Where(x => x.IsApproved== isApproved).ToList(); });
+            List<Post> posts = await Task<List<Post>>.Run(() => { return db.posts.Where(x => x.IsApproved== isApproved && x.Submited== submited).ToList(); });
             PostResponse postResponse = new PostResponse();
             postResponse.posts = new List<PostDTO>();
             foreach (var post in posts)
@@ -28,7 +28,8 @@ namespace EditorialService.BL.Common
                     PostId = post.PostId,
                     Content = post.Content,
                     IsApproved = post.IsApproved,
-                    Comments = comments
+                    Comments = comments,
+                    Submited= post.Submited
                 };
                 postResponse.posts.Add(postDTO);
             }
@@ -70,7 +71,8 @@ namespace EditorialService.BL.Common
                     PostId = post.PostId,
                     Content = post.Content,
                     IsApproved = post.IsApproved,
-                    Comments = comments
+                    Comments = comments,
+                    Submited= post.Submited,
                 };
                 postResponse.posts.Add(postDTO);
             }

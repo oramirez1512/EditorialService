@@ -11,6 +11,6 @@ namespace EditorialService.BL.UseCases
     public interface IPublishedUseCase
     {
         Task<PostResponse> getPublishedPost();
-        Task<bool> AddComment(CommentRequest commentRequest);
+        Task<HttpResultMessage> AddComment(CommentRequest commentRequest);
     }
 }

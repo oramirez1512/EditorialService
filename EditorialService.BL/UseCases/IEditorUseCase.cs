@@ -11,6 +11,8 @@ namespace EditorialService.BL.UseCases
     public interface IEditorUseCase
     {
         Task<PostResponse> getPendingPost();
-        Task<bool> AddComment(CommentRequest commentRequest);
+        Task<HttpResultMessage> AddComment(CommentRequest commentRequest);
+        Task<HttpResultMessage> ApprovePost(PostRequestBase postRequest);
+        Task<HttpResultMessage> RejectPost(PostRequestBase postRequest);
     }
 }

@@ -17,5 +17,7 @@ namespace EditorialService.BL.Domain.Model.Entities
         public bool IsApproved { get; set; }
 
         public long? ApprovedBy { get; set; }
+
+        public bool Submited { get; set; }
     }
 }

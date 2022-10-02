@@ -11,5 +11,9 @@ namespace EditorialService.BL.UseCases
     public interface IWriterUseCase
     {
         Task<PostResponse> getPostByAuthor(OwnPostRequest postRequest);
+        Task<HttpResultMessage> CreateNewPost(CreatePostRequest createPostRequest);
+        Task<HttpResultMessage> EditPost(EditPostRequest editPostRequest);
+
+        Task<HttpResultMessage> SubmitPost(PostRequestBase postRequest); 
     }
 }

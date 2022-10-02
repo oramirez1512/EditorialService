@@ -23,14 +23,26 @@ namespace EditorialService.BL.UseCases
             this.db = db;
         }
 
-        public async Task<bool> AddComment(CommentRequest commentRequest)
+        public async Task<HttpResultMessage> AddComment(CommentRequest commentRequest)
         {
-            return await PostQueries.addComment(false, db, commentRequest);
+            HttpResultMessage result = new HttpResultMessage();
+
+            
+
+            if ( await PostQueries.addComment(false, db, commentRequest)) 
+            {
+                result.message = "Comment in post" + commentRequest.PostId + " added!";
+            }
+            else 
+            {
+                result.message = "This post can´t be commented";
+            }
+            return result;
         }
 
         public async Task<PostResponse> getPublishedPost()
         {
-            return await PostQueries.getPosts(true, db);
+            return await PostQueries.getPosts(true,false, db);
         }
     }
 }
