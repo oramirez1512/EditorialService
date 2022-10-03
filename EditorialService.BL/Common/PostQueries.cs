@@ -39,7 +39,12 @@ namespace EditorialService.BL.Common
         public static async Task<bool> addComment(bool beforeApproved,EditorialDbContext db, CommentRequest commentRequest) 
         {
             Post post = await Task<Post>.Run(() => { return db.posts.Where(x => x.PostId == commentRequest.PostId).FirstOrDefault(); });
-            if(post != null) {  
+            User user = await Task<User>.Run(() => { return db.users.Where(x => x.UserId == commentRequest.editorId).FirstOrDefault(); });
+            if(post != null) {
+                if((post.Submited)&& user.RoleId != 2) 
+                {
+                    return false;
+                }
                 db.comments.Add(new Comment { PostId = commentRequest.PostId,
                     beforeApproved=beforeApproved,
                     CommentId=db.comments.Count()+1,

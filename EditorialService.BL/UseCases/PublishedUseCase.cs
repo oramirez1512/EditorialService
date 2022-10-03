@@ -26,9 +26,7 @@ namespace EditorialService.BL.UseCases
         public async Task<HttpResultMessage> AddComment(CommentRequest commentRequest)
         {
             HttpResultMessage result = new HttpResultMessage();
-
-            
-
+           
             if ( await PostQueries.addComment(false, db, commentRequest)) 
             {
                 result.message = "Comment in post" + commentRequest.PostId + " added!";

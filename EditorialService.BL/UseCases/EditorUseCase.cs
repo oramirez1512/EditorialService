@@ -34,7 +34,7 @@ namespace EditorialService.BL.UseCases
             Post post = await Task<Post>.Run(() => { return db.posts.Where(x => x.PostId == postRequest.PostId).FirstOrDefault(); });
             if (!(post.Submited) || (post.IsApproved)) 
             {
-                return new HttpResultMessage { message = "thes Post" + postRequest.PostId + " is published yet or the author not submitted this for review!" };
+                return new HttpResultMessage { message = "The Post" + postRequest.PostId + " is published yet or the author not submitted this for review!" };
             }
             post.IsApproved = true;
             post.ApprovedBy = postRequest.editorId;
@@ -52,9 +52,9 @@ namespace EditorialService.BL.UseCases
         public async Task<HttpResultMessage> RejectPost(PostRequestBase postRequest)
         {
             Post post = await Task<Post>.Run(() => { return db.posts.Where(x => x.PostId == postRequest.PostId).FirstOrDefault(); });
-            if ((post.Submited) || (post.IsApproved))
+            if ((!post.Submited) || (post.IsApproved))
             {
-                return new HttpResultMessage { message = "thes Post" + postRequest.PostId + " is published yet or the author not submitted this for review!" };
+                return new HttpResultMessage { message = "The Post" + postRequest.PostId + " is published yet or the author not submitted this for review!" };
             }
             post.ApprovedBy = postRequest.editorId;
             post.Submited = false;

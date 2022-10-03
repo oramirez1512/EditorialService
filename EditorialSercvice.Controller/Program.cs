@@ -97,7 +97,7 @@ static void AddEditorialDb(WebApplication app)
     db.permissions.Add(permissions3);
     User user1 = new User { UserId = 1, PersonId = 1, RoleId = 1, UserName = "Writer1", Password = "123Writer" };
     User user2 = new User { UserId = 2, PersonId = 2, RoleId = 2, UserName = "Editor1", Password = "123Editor" };
-    User user3 = new User { UserId = 3, PersonId = 2, RoleId = 3, UserName = "Commentarist1", Password = "123Commentarist" };
+    User user3 = new User { UserId = 3, PersonId = 3, RoleId = 3, UserName = "Commentarist1", Password = "123Commentarist" };
     db.users.Add(user1);
     db.users.Add(user2);
     db.users.Add(user3);

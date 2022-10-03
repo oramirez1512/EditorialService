@@ -36,5 +36,45 @@ namespace EditorialServiceTest.UseCaseTest
             //Assert
             Assert.Equal("Comment in Post" + commentRequest.PostId + " added!",result.message);
         }
+        [Fact]
+        async Task ApprovePost() 
+        {
+            //Arrange
+            PostRequestBase submitPostRequest = new PostRequestBase { editorId = 2, PostId = 4 };
+            //Act
+            HttpResultMessage result = await editorUseCase.ApprovePost(submitPostRequest);
+            //Assert
+            Assert.Equal("Post" + submitPostRequest.PostId + " Approved!", result.message);
+        }
+        [Fact]
+        async Task RejectPost()
+        {
+            //Arrange
+            PostRequestBase submitPostRequest = new PostRequestBase { editorId = 2, PostId = 4 };
+            //Act
+            HttpResultMessage result = await editorUseCase.RejectPost(submitPostRequest);
+            //Assert
+            Assert.Equal("Post" + submitPostRequest.PostId + " is returned for edit!", result.message);
+        }
+        [Fact]
+        async Task ApprovePostError()
+        {
+            //Arrange
+            PostRequestBase submitPostRequest = new PostRequestBase { editorId = 2, PostId = 1 };
+            //Act
+            HttpResultMessage result = await editorUseCase.ApprovePost(submitPostRequest);
+            //Assert
+            Assert.Equal("The Post" + submitPostRequest.PostId + " is published yet or the author not submitted this for review!", result.message);
+        }
+        [Fact]
+        async Task RejectPostError()
+        {
+            //Arrange
+            PostRequestBase submitPostRequest = new PostRequestBase { editorId = 2, PostId = 1 };
+            //Act
+            HttpResultMessage result = await editorUseCase.RejectPost(submitPostRequest);
+            //Assert
+            Assert.Equal("The Post" + submitPostRequest.PostId + " is published yet or the author not submitted this for review!", result.message);
+        }
     }
 }
