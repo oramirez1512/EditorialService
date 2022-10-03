@@ -44,6 +44,22 @@ This API contains 3 Endpoints groups
 ##Time of development:
 This project was begun 09/31/2022 6:00 pm and finished in time of the last commit date in this repo
 ```bash
-Time: 26H AVG.
+Time: 27H AVG.
 ```
+##Deployed:
+This app is currently deployed in Heroku with the URL:
+```bash
+https://editorialservice.herokuapp.com
+```
+If you can use a deployed service, use postman with the next format:
+```bash
+https://editorialservice.herokuapp.com/<Controller>/<Action>
+```
+##Data for test:
+This Api use BasicAuth protocol for authentication.
+Please login in the Authorization option with a registred user. 
+For authenticate, use any of the next credentials:
+- For writer: userName: Writer1, Password: 123Writer
+- For editor: userName: Editor1, Password: 123Editor
+- For commentarist(can´t approve or create post): userName:Commentarist1, Password: 123Commentarist
  
