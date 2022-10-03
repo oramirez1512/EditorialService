@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorialService.Controller", "EditorialSercvice.Controller\EditorialService.Controller.csproj", "{52C42D32-0586-4C4F-8DC1-9F5F6A9631C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EditorialService.Controller", "EditorialSercvice.Controller\EditorialService.Controller.csproj", "{52C42D32-0586-4C4F-8DC1-9F5F6A9631C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorialService.BL", "EditorialService.BL\EditorialService.BL.csproj", "{7FAAA864-4C6D-4189-864F-8F7B09B1D368}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EditorialService.BL", "EditorialService.BL\EditorialService.BL.csproj", "{7FAAA864-4C6D-4189-864F-8F7B09B1D368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorialServiceTest", "EditorialServiceTest\EditorialServiceTest.csproj", "{DD9270BC-04A7-43FF-AEF0-8752618EE27F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7FAAA864-4C6D-4189-864F-8F7B09B1D368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FAAA864-4C6D-4189-864F-8F7B09B1D368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FAAA864-4C6D-4189-864F-8F7B09B1D368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9270BC-04A7-43FF-AEF0-8752618EE27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9270BC-04A7-43FF-AEF0-8752618EE27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9270BC-04A7-43FF-AEF0-8752618EE27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9270BC-04A7-43FF-AEF0-8752618EE27F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
